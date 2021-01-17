@@ -9,6 +9,9 @@ import sys
 
 
 class PresenationToPdf:
+
+    msec_screen_cap_interval = 10000
+
     def __init__(self, video_path, output_filename):
         self.vid_obj = cv2.VideoCapture(video_path)
         self.output_filename = output_filename
@@ -35,7 +38,7 @@ class PresenationToPdf:
         self.count += 1
 
         while success:
-            msec_timestamp = self.count * 10000
+            msec_timestamp = self.count * self.msec_screen_cap_interval
             # Skip to part in video
             self.vid_obj.set(cv2.CAP_PROP_POS_MSEC, msec_timestamp)
 
