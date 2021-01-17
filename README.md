@@ -8,5 +8,17 @@ PDF file is searchable
 2. If the image is different, it saves the image and performs OCR on it.
 3. Saves all images into a single searchable PDF.
 
+## Installation
+1. Create and activate a Python virtual env
+```
+$ python3 -m venv env
+$ source env/bin/activate
+```
+2. Install dependencies
+```
+$ pip3 install -r requirements.txt
+```
+
 ## Usage
-`python3 extract.py {video_path} {output_filename}`
+`python3 extract.py {video_path} {output_pdf_filename}`
+
