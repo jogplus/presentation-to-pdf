@@ -1,3 +1,8 @@
 *.pdf
 env
 .vscode
+*.spec
+*.mov
+build
+dist
+__pycache__

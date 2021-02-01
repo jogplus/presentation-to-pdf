@@ -5,6 +5,7 @@ import numpy
 import pytesseract
 import PyPDF2
 import io
+import os
 import sys
 
 
@@ -12,9 +13,12 @@ class PresenationToPdf:
 
     msec_screen_cap_interval = 10000
 
-    def __init__(self, video_path, output_filename):
+    def __init__(self, video_path):
         self.vid_obj = cv2.VideoCapture(video_path)
-        self.output_filename = output_filename
+        self.output_filename = (
+            f"{os.path.splitext(os.path.basename(video_path))[0]}.pdf"
+        )
+        print(f"Creating file: {self.output_filename}")
         total_frames = self.vid_obj.get(cv2.CAP_PROP_FRAME_COUNT)
         fps = self.vid_obj.get(cv2.CAP_PROP_FPS)
         self.total_mseconds = (total_frames / fps) * 1000
@@ -66,10 +70,15 @@ class PresenationToPdf:
         # Save all images into single pdf
         with open(self.output_filename, "w+b") as f:
             self.pdf_writer.write(f)
+        print("Extraction complete!")
+        # Open Finder if on MacOS
+        if sys.platform == "darwin":
+            os.popen(f"open -R {self.output_filename}")
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Invalid format: use python3 extract.py {video_path} {output_filename}")
+    if len(sys.argv) > 1:
+        video_path = sys.argv[1]
     else:
-        PresenationToPdf(sys.argv[1], sys.argv[2]).extract()
+        video_path = input("Drag video file into this window and press Enter: ")
+    PresenationToPdf(video_path.strip()).extract()
