@@ -14,7 +14,7 @@ PDF file is searchable
 1. Download this code by clicking the green code button on Github and then "Download ZIP"
 2. Unzip the downloaded folder and open it
 4. Open Terminal.app and type `pip3 install -r ` and then drag in `requirements.txt` into the window. It should look something like `pip3 install -r /../requirements.txt`. Then hit enter.
-5. Run the script using `python3 ` and then drag in `extract.py` into the window. It should look something like `python3 /../extract.py`. Then hit enter.
+5. In Terminal.app type `python3 ` and then drag in `extract.py` into the window. It should look something like `python3 /../extract.py`. Then hit enter.
 5. Follow the instruction in the window "Drag video file into this window and press Enter: "
 
 ## Manual Installation
